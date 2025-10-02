@@ -9,16 +9,16 @@ set -x
 # project name and a brief description of the project.
 # Then it unzips the raw data provided by the client.
 
-if [ -d newproject ]; then
-  echo "Directory 'newproject' already exists. Please remove it before running this script."
-  exit 1
+if [ -d newproject ]; then 
+  echo "Directory 'newproject' already exists. Remove it Automatically" 
+  rm -rf newproject ## removes existing 'newproject'
 fi
-mkdir newproject
-cd newproject
+mkdir newproject 
+cd newproject   
 
-mkdir analysis output
-touch README.md
-touch analysis/main.py
+mkdir analysis output 
+touch README.md 
+touch analysis/main.py 
 
 # download client data
 curl -Lo rawdata.zip https://github.com/UofT-DSI/shell/raw/refs/heads/main/02_activities/assignments/rawdata.zip
@@ -26,12 +26,17 @@ unzip -q rawdata.zip
 
 ###########################################
 # Complete assignment here
-
 # 1. Create a directory named data
+mkdir data
+  ## Visually double check that the "data" folder exists inside 'newprojects' folder
+  #ls .
 
 # 2. Move the ./rawdata directory to ./data/raw
-
+mv rawdata data/raw
+  
 # 3. List the contents of the ./data/raw directory
+echo "Contents of ./data/raw:"
+ls -1 ./data/raw ## -1 prints one file name per line!
 
 # 4. In ./data/processed, create the following directories: server_logs, user_logs, and event_logs
 
